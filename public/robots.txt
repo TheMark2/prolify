@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://proplify.vercel.app/sitemap.xml
+
+# Block admin areas (when you add them later)
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /*.css
+Allow: /*.js

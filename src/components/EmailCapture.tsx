@@ -74,11 +74,11 @@ export default function EmailCapture() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="text-center mb-6 sm:mb-8 space-y-6">
-            <h3 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black-950 mb-4 leading-tight px-2">
-                Impulsa tu negocio, <span className="font-medium font-lora text-neutral-800">automatiza tu trabajo</span>
-            </h3>
-            <p className="text-sm sm:text-base text-black-600 max-w-xl mx-auto leading-relaxed px-4">
-              Únete a la lista de espera y sé de los primeros en acceder a Proplify. Te mantendremos informado sobre el lanzamiento y ofertas exclusivas.
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black-950 mb-4 leading-tight px-2">
+                Automatización inmobiliaria SaaS, <span className="font-medium font-lora text-neutral-800">impulsa tu inmobiliaria</span>
+            </h2>
+            <p className="text-sm sm:text-base text-black-600 max-w-2xl mx-auto leading-relaxed px-4">
+              Únete a la lista de espera del próximo mejor software de gestión inmobiliaria. Sé de los primeros en acceder a nuestra nueva plataforma digital para tener <span className="font-bold">el primer mes gratuito</span>.
             </p>
           </div>
 

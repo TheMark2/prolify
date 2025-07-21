@@ -24,9 +24,33 @@
   --font-serif: var(--font-lora);
 }
 
-/* Force Plus Jakarta Sans globally with high specificity */
+/* Force Plus Jakarta Sans globally with high specificity and reduce letter-spacing */
 * {
   font-family: var(--font-jakarta), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: -0.01em;
+}
+
+/* Reduce letter-spacing for Lora font specifically */
+.font-lora, [class*="font-lora"] {
+  letter-spacing: -0.015em !important;
+}
+
+/* Adjust letter-spacing for headings */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+/* Fine-tune letter-spacing for different text sizes */
+.text-xs, .text-sm {
+  letter-spacing: -0.005em;
+}
+
+.text-lg, .text-xl {
+  letter-spacing: -0.015em;
+}
+
+.text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl {
+  letter-spacing: -0.025em;
 }
 
 body, html {

@@ -3,26 +3,37 @@
 import { Button } from '@/components/ui/Button';
 import { PlayIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HeroSection() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center space-y-8 justify-center">
+        {/* Navigation */}
+        <nav className="flex justify-center mb-8">
+          <Link 
+            href="/blog" 
+            className="text-neutral-600 hover:text-black-950 font-medium transition-colors"
+          >
+            Blog
+          </Link>
+        </nav>
+
         {/* Logo/Brand */}
-        <div className="flex items-center justify-center space-x-4">
+        <div className="flex items-center justify-center space-x-4 mb-4">
           <Image src="/proplify.png" alt="Logo" width={100} height={100} />
         </div>
 
         {/* Main Headline */}
-        <h2 className="text-4xl sm:text-6xl font-bold text-black-950 mb-4 leading-tight">
-          La plataforma todo-en-uno para{' '}
-          <span className="text-neutral-700 font-lora font-medium italic">inmobiliarias</span>
-        </h2>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black-950 mb-4 leading-tight mt-4 sm:mt-6 lg:mt-8 px-2">
+          Software de gestión inmobiliaria{' '}
+          <span className="text-neutral-700 font-lora font-medium italic">plataforma digital todo-en-uno</span>
+        </h1>
 
         {/* Subtitle */}
-        <p className="text-lg sm:text-xl text-black-600 max-w-4xl mx-auto leading-relaxed">
-          Gestiona propiedades, automatiza marketing, integra con todo tipo de portales, 
-          y convierte más leads con IA. Todo esto y mucho mas desde una sola plataforma.
+        <p className="text-lg sm:text-xl text-black-600 max-w-4xl mx-auto leading-relaxed mt-4 sm:mt-6 lg:mt-8 px-4">
+          Próximamente: CRM inmobiliario español completo. Automatiza marketing inmobiliario, integra Idealista y Fotocasa, 
+          gestiona propiedades digitalmente y convierte más leads con IA. Únete a la lista de espera.
         </p>
 
         {/* CTA Button */}
