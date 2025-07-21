@@ -73,16 +73,16 @@ export default function EmailCapture() {
     <div id="email-capture" className="py-8 sm:py-12 lg:py-16 bg-neutral-50">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="p-4 sm:p-6 lg:p-8">
-          <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black-950 mb-4 leading-tight px-2">
+          <div className="text-center mb-6 sm:mb-8 space-y-6">
+            <h3 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black-950 mb-4 leading-tight px-2">
                 Impulsa tu negocio, <span className="font-medium font-lora text-neutral-800">automatiza tu trabajo</span>
             </h3>
-            <p className="text-sm sm:text-md text-black-600 max-w-lg mx-auto leading-relaxed px-4">
+            <p className="text-sm sm:text-base text-black-600 max-w-xl mx-auto leading-relaxed px-4">
               Únete a la lista de espera y sé de los primeros en acceder a Proplify. Te mantendremos informado sobre el lanzamiento y ofertas exclusivas.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 max-w-md mx-auto mt-6 sm:mt-8 px-4 sm:px-0">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 max-w-md mx-auto mt-12 sm:mt-16 px-4 sm:px-0">
             <Input
               label="Nombre de tu inmobiliaria"
               value={companyName}
