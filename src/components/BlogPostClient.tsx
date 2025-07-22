@@ -4,16 +4,13 @@ import * as React from "react";
 import { WaitlistDialog } from "@/components/WaitlistDialog";
 
 interface BlogPostClientProps {
-  post: any;
+  post: Record<string, any>;
   readingTime: number;
   featuredImageUrl?: string;
   children: React.ReactNode;
 }
 
 export default function BlogPostClient({ 
-  post, 
-  readingTime, 
-  featuredImageUrl, 
   children 
 }: BlogPostClientProps) {
   const [showWaitlistDialog, setShowWaitlistDialog] = React.useState(false);

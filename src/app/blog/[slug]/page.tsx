@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArrowLeftIcon } from 'lucide-react';
-import { IconCirclesRelation, IconClockHour10, IconHomeEdit, IconWand } from '@tabler/icons-react';
+import { IconClockHour10 } from '@tabler/icons-react';
 import ContentfulTOC from '@/components/ContentfulTOC';
 import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import RichTextRenderer from '@/components/RichTextRenderer';

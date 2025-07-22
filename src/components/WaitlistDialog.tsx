@@ -4,7 +4,7 @@ import * as React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { X, Mail, User, Building2 } from "lucide-react";
+
 import { IconBellCheck } from "@tabler/icons-react";
 
 interface WaitlistDialogProps {

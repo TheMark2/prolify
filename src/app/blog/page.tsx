@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { PaperAirplaneIcon } from '@heroicons/react/16/solid';
-import { getBlogPosts, BlogPost } from '@/lib/contentful';
+import { getBlogPosts } from '@/lib/contentful';
 
 // Función para calcular minutos de lectura
 function calculateReadingTime(content: string): number {
