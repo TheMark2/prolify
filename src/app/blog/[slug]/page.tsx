@@ -21,9 +21,9 @@ function calculateReadingTime(content: string): number {
 
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Generate static params for all blog posts
@@ -35,7 +35,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   
   if (!post) {
     return {
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://proplify.com';
-  const postUrl = `${baseUrl}/blog/${params.slug}`;
+  const postUrl = `${baseUrl}/blog/${slug}`;
   const imageUrl = post.fields.featuredImage?.fields?.file?.url 
     ? `https:${post.fields.featuredImage.fields.file.url}` 
     : `${baseUrl}/og-default.jpg`;
@@ -105,7 +106,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPost({ params }: Props) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   
   if (!post) {
     notFound();
