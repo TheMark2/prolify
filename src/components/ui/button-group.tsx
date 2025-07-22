@@ -9,6 +9,10 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
   ({ className, variant = "default", size = "md", orientation = "horizontal", ...props }, ref) => {
+    // TODO: Implement variant and size styling
+    // Currently variant and size are not used but kept for future implementation
+    void variant; // Suppress ESLint warning
+    void size; // Suppress ESLint warning
     return (
       <div
         ref={ref}

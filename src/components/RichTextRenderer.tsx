@@ -1,5 +1,5 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Document, BLOCKS, INLINES, Block, Inline } from '@contentful/rich-text-types';
+import { Document, BLOCKS, INLINES, Block, Inline, Text } from '@contentful/rich-text-types';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,7 +25,7 @@ const renderOptions = {
       );
     },
     [BLOCKS.HEADING_2]: (node: Block | Inline, children: React.ReactNode) => {
-      const text = (node.content[0] as any)?.value || '';
+      const text = (node.content[0] as Text)?.value || '';
       const id = `heading-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`;
       return (
         <h2 id={id} className="text-3xl font-bold mt-20 mb-10 leading-tight tracking-tight">
@@ -33,8 +33,8 @@ const renderOptions = {
         </h2>
       );
     },
-    [BLOCKS.HEADING_3]: (node: any, children: any) => {
-      const text = node.content[0]?.value || '';
+    [BLOCKS.HEADING_3]: (node: Block | Inline, children: React.ReactNode) => {
+      const text = (node.content[0] as Text)?.value || '';
       const id = `heading-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`;
       return (
         <h3 id={id} className="text-xl font-bold mt-10 mb-8 leading-tight tracking-tight">
@@ -42,8 +42,8 @@ const renderOptions = {
         </h3>
       );
     },
-    [BLOCKS.HEADING_4]: (node: any, children: any) => {
-      const text = node.content[0]?.value || '';
+    [BLOCKS.HEADING_4]: (node: Block | Inline, children: React.ReactNode) => {
+      const text = (node.content[0] as Text)?.value || '';
       const id = `heading-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`;
       return (
         <h4 id={id} className="text-lg font-semibold text-neutral-500 mt-10 mb-6">
@@ -51,47 +51,47 @@ const renderOptions = {
         </h4>
       );
     },
-    [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => (
       <p className="text-base leading-relaxed mb-2">
         {children}
       </p>
     ),
-    [BLOCKS.UL_LIST]: (node: any, children: any) => (
+    [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => (
       <ul className="text-base text-neutral-700 leading-relaxed mb-8 list-disc list-inside space-y-3">
         {children}
       </ul>
     ),
-    [BLOCKS.OL_LIST]: (node: any, children: any) => (
+    [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => (
       <ol className="text-base text-neutral-700 leading-relaxed mb-8 list-decimal list-inside space-y-3">
         {children}
       </ol>
     ),
-    [BLOCKS.LIST_ITEM]: (node: any, children: any) => (
+    [BLOCKS.LIST_ITEM]: (node: Block | Inline, children: React.ReactNode) => (
       <li className="mb-3 leading-relaxed">{children}</li>
     ),
-    [BLOCKS.TABLE]: (node: any, children: any) => (
+    [BLOCKS.TABLE]: (node: Block | Inline, children: React.ReactNode) => (
       <div className="my-8 overflow-x-auto">
         <table className="w-full border-collapse border border-neutral-200">
           {children}
         </table>
       </div>
     ),
-    [BLOCKS.TABLE_HEADER_CELL]: (node: any, children: any) => (
+    [BLOCKS.TABLE_HEADER_CELL]: (node: Block | Inline, children: React.ReactNode) => (
       <th className="border border-neutral-200 bg-white px-4 py-3 text-left text-xs font-medium text-neutral-900 tracking-wider">
         {children}
       </th>
     ),
-    [BLOCKS.TABLE_CELL]: (node: any, children: any) => (
+    [BLOCKS.TABLE_CELL]: (node: Block | Inline, children: React.ReactNode) => (
       <td className="border border-neutral-200 px-4 py-3 text-xs text-neutral-700">
         {children}
       </td>
     ),
-    [BLOCKS.TABLE_ROW]: (node: any, children: any) => (
+    [BLOCKS.TABLE_ROW]: (node: Block | Inline, children: React.ReactNode) => (
       <tr>
         {children}
       </tr>
     ),
-    [INLINES.HYPERLINK]: (node: any, children: any) => (
+    [INLINES.HYPERLINK]: (node: Block | Inline, children: React.ReactNode) => (
       <Link
         href={node.data.uri}
         className="text-blue-600 font-medium underline decoration-2 underline-offset-2 hover:text-blue-800 transition-colors"
@@ -103,10 +103,10 @@ const renderOptions = {
     ),
   },
   renderMark: {
-    bold: (text: any) => <strong className="font-semibold text-black-950">{text}</strong>,
-    italic: (text: any) => <em className="italic">{text}</em>,
-    underline: (text: any) => <u className="underline">{text}</u>,
-    code: (text: any) => (
+    bold: (text: React.ReactNode) => <strong className="font-semibold text-black-950">{text}</strong>,
+    italic: (text: React.ReactNode) => <em className="italic">{text}</em>,
+    underline: (text: React.ReactNode) => <u className="underline">{text}</u>,
+    code: (text: React.ReactNode) => (
       <code className="bg-neutral-100 text-neutral-800 px-2 py-1 rounded text-sm font-mono">
         {text}
       </code>

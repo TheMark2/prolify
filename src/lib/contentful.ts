@@ -79,7 +79,7 @@ export async function getBlogPostSlugs(): Promise<string[]> {
       select: ['fields.slug'],
     });
 
-    return entries.items.map((item) => (item.fields as any).slug);
+    return entries.items.map((item) => (item.fields as { slug: string }).slug);
   } catch (error) {
     console.error('Error fetching blog post slugs:', error);
     return [];

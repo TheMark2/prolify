@@ -2,9 +2,10 @@
 
 import * as React from "react";
 import { WaitlistDialog } from "@/components/WaitlistDialog";
+import { BlogPost } from "@/lib/contentful";
 
 interface BlogPostClientProps {
-  post: Record<string, any>;
+  post: BlogPost;
   readingTime: number;
   featuredImageUrl?: string;
   children: React.ReactNode;

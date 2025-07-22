@@ -22,7 +22,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     const doc = parser.parseFromString(content, 'text/html');
     const headings = doc.querySelectorAll('h2'); // Solo h2 (subtítulos)
     
-    const items: TocItem[] = Array.from(headings).map((heading, index) => {
+    const items: TocItem[] = Array.from(headings).map((heading) => {
       const level = 2; // Solo nivel 2
       const text = heading.textContent || '';
       // Crear un ID más limpio basado en el texto

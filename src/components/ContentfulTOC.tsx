@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Document, BLOCKS, Block } from '@contentful/rich-text-types';
+import { Document, BLOCKS, Block, Text } from '@contentful/rich-text-types';
 
 interface TocItem {
   id: string;
@@ -28,7 +28,7 @@ export default function ContentfulTOC({ document }: ContentfulTOCProps) {
             node.nodeType === BLOCKS.HEADING_3 || 
             node.nodeType === BLOCKS.HEADING_4) {
           
-          const text = (node.content[0] as any)?.value || '';
+          const text = (node.content[0] as Text)?.value || '';
           const level = node.nodeType === BLOCKS.HEADING_2 ? 2 : 
                        node.nodeType === BLOCKS.HEADING_3 ? 3 : 4;
           const id = `heading-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`;
