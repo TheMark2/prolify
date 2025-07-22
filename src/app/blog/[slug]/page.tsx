@@ -3,11 +3,12 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArrowLeftIcon } from 'lucide-react';
-import { IconCirclesRelation, IconHomeEdit, IconWand } from '@tabler/icons-react';
+import { IconCirclesRelation, IconClockHour10, IconHomeEdit, IconWand } from '@tabler/icons-react';
 import ContentfulTOC from '@/components/ContentfulTOC';
 import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import RichTextRenderer from '@/components/RichTextRenderer';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import BlogPostClient from '@/components/BlogPostClient';
 
 // Función para calcular minutos de lectura
 function calculateReadingTime(content: string): number {
@@ -118,20 +119,21 @@ export default async function BlogPost({ params }: Props) {
   const featuredImageUrl = post.fields.featuredImage?.fields.file.url;
 
   return (
-    <div>
+    <BlogPostClient post={post} readingTime={readingTime} featuredImageUrl={featuredImageUrl}>
       {/* Article */}
       <main className="max-w-7xl mx-auto px-8 sm:px-12 py-12">
         {/* Breadcrumb */}
-        <nav className="mb-8">
-          <Link href="/blog" className="text-neutral-500 hover:text-neutral-700 transition-colors flex items-center gap-2 bg-neutral-50 px-4 py-2 rounded-lg w-fit font-medium text-sm">
-            <ArrowLeftIcon className="w-3 h-3" />
-            Volver al blog
-          </Link>
-        </nav>
+
 
         <div className="flex gap-12">
           {/* Table of Contents - Left Sidebar */}
           <aside className="hidden lg:block flex-shrink-0 w-64">
+            <nav className="mb-8">
+              <Link href="/blog" className="text-neutral-500 hover:text-neutral-700 transition-colors flex items-center gap-2 bg-neutral-50 px-4 py-2 rounded-lg w-fit font-medium text-sm">
+                <ArrowLeftIcon className="w-3 h-3" />
+                Volver al blog
+              </Link>
+            </nav>
             <ContentfulTOC document={post.fields.content} />
           </aside>
 
@@ -140,7 +142,7 @@ export default async function BlogPost({ params }: Props) {
             {/* Article Header */}
             <header className="mb-12">
               <div className="mb-6 justify-between flex items-center">
-                <span className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+                <span className="text-xs font-medium text-neutral-500 uppercase tracking-wide border border-neutral-200 px-4 py-2 rounded-full bg-neutral-50">
                   {post.fields.category}
                 </span>
                 <time className="text-sm text-neutral-400 ml-4">
@@ -150,7 +152,8 @@ export default async function BlogPost({ params }: Props) {
                     day: 'numeric'
                   })}
                 </time>
-                <span className="text-sm text-neutral-400 ml-4">
+                <span className="text-xs text-neutral-400 ml-4 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 bg-neutral-50">
+                  <IconClockHour10 size={16} />
                   {readingTime} min de lectura
                 </span>
               </div>
@@ -182,33 +185,6 @@ export default async function BlogPost({ params }: Props) {
                 Únete a la lista de espera de nuestro software de gestión inmobiliaria a cambio <span className="font-medium font-lora text-neutral-800">del primer mes gratuito.</span> 
               </h3>
               
-              {/* Features Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-3xl mx-auto">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-                    <IconHomeEdit size={24} />  
-                  </div>
-                  <h4 className="font-semibold text-sm mb-1">Gestión de Propiedades</h4>
-                  <p className="text-xs text-neutral-600">Centraliza todo tu inventario</p>
-                </div>
-                
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-                    <IconCirclesRelation size={24} />  
-                  </div>
-                  <h4 className="font-semibold text-sm mb-1">Integración Portales</h4>
-                  <p className="text-xs text-neutral-600">Idealista, Fotocasa, Pisos.com, etc.</p>
-                </div>
-                
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-                    <IconWand size={24} />  
-                  </div>
-                  <h4 className="font-semibold text-sm mb-1">Automatización IA</h4>
-                  <p className="text-xs text-neutral-600">Leads y marketing inteligente</p>
-                </div>
-              </div>
-              
               <Link 
                 href="/#email-capture"
                 className="inline-flex items-center justify-center px-6 py-3 bg-neutral-800 text-white font-medium rounded-lg hover:bg-neutral-800 transition-colors gap-2"
@@ -222,6 +198,6 @@ export default async function BlogPost({ params }: Props) {
           </div>
         </div>
       </main>
-    </div>
+    </BlogPostClient>
   );
 }

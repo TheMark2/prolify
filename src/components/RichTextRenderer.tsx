@@ -1,5 +1,5 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { Document, BLOCKS, INLINES, Block, Inline } from '@contentful/rich-text-types';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,7 +10,7 @@ interface RichTextRendererProps {
 // Opciones de renderizado para el Rich Text
 const renderOptions = {
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+    [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
       const { file, title } = node.data.target.fields;
       return (
         <div className="my-8">
@@ -24,8 +24,8 @@ const renderOptions = {
         </div>
       );
     },
-    [BLOCKS.HEADING_2]: (node: any, children: any) => {
-      const text = node.content[0]?.value || '';
+    [BLOCKS.HEADING_2]: (node: Block | Inline, children: React.ReactNode) => {
+      const text = (node.content[0] as any)?.value || '';
       const id = `heading-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`;
       return (
         <h2 id={id} className="text-3xl font-bold mt-20 mb-10 leading-tight tracking-tight">
@@ -46,13 +46,13 @@ const renderOptions = {
       const text = node.content[0]?.value || '';
       const id = `heading-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`;
       return (
-        <h4 id={id} className="text-xl font-bold mt-10 mb-6">
+        <h4 id={id} className="text-lg font-semibold text-neutral-500 mt-10 mb-6">
           {children}
         </h4>
       );
     },
     [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
-      <p className="text-base leading-relaxed mb-4">
+      <p className="text-base leading-relaxed mb-2">
         {children}
       </p>
     ),
@@ -69,10 +69,32 @@ const renderOptions = {
     [BLOCKS.LIST_ITEM]: (node: any, children: any) => (
       <li className="mb-3 leading-relaxed">{children}</li>
     ),
+    [BLOCKS.TABLE]: (node: any, children: any) => (
+      <div className="my-8 overflow-x-auto">
+        <table className="w-full border-collapse border border-neutral-200">
+          {children}
+        </table>
+      </div>
+    ),
+    [BLOCKS.TABLE_HEADER_CELL]: (node: any, children: any) => (
+      <th className="border border-neutral-200 bg-white px-4 py-3 text-left text-xs font-medium text-neutral-900 tracking-wider">
+        {children}
+      </th>
+    ),
+    [BLOCKS.TABLE_CELL]: (node: any, children: any) => (
+      <td className="border border-neutral-200 px-4 py-3 text-xs text-neutral-700">
+        {children}
+      </td>
+    ),
+    [BLOCKS.TABLE_ROW]: (node: any, children: any) => (
+      <tr>
+        {children}
+      </tr>
+    ),
     [INLINES.HYPERLINK]: (node: any, children: any) => (
       <Link
         href={node.data.uri}
-        className="text-black-950 font-medium underline decoration-2 underline-offset-2 hover:text-neutral-700 transition-colors"
+        className="text-blue-600 font-medium underline decoration-2 underline-offset-2 hover:text-blue-800 transition-colors"
         target="_blank"
         rel="noopener noreferrer"
       >
