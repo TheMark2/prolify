@@ -47,6 +47,12 @@ export default function RootLayout({
     <html lang="es" className={`${plusJakarta.variable} ${lora.variable}`}>
       <head>
         <StructuredData />
+        {/* Ahrefs Web Analytics */}
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="62W7+DYKAr7y+JoJzPKRbw"
+          defer
+        ></script>
       </head>
       <body className={plusJakarta.variable}>
         <GlobalHeader />

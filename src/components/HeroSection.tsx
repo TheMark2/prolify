@@ -19,11 +19,6 @@ export default function HeroSection() {
           </Link>
         </nav>
 
-        {/* Logo/Brand */}
-        <div className="flex items-center justify-center space-x-4 mb-4">
-          <Image src="/proplify.png" alt="Logo" width={100} height={100} />
-        </div>
-
         {/* Main Headline */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black-950 mb-4 leading-tight mt-4 sm:mt-6 lg:mt-8 px-2">
           Software de gestión inmobiliaria{' '}
