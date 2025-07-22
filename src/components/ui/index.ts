@@ -1,10 +1,10 @@
 // UI Components Export
 export { Badge } from './badge';
-export { Button } from './button';
+export { Button } from './Button';
 export { ButtonGroup } from './button-group';
 export { Checkbox } from './checkbox';
-export { Input } from './input';
-export { Label } from './label';
+export { Input } from './Input';
+// export { Label } from './label'; // TODO: Create label component
 export { RadioGroup, RadioGroupItem } from './radio-group';
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
 export { Switch } from './switch';

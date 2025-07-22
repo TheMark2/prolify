@@ -3,13 +3,7 @@ import Image from 'next/image';
 import { PaperAirplaneIcon } from '@heroicons/react/16/solid';
 import { getBlogPosts } from '@/lib/contentful';
 
-// Función para calcular minutos de lectura
-function calculateReadingTime(content: string): number {
-  const wordsPerMinute = 200;
-  const textContent = content.replace(/<[^>]*>/g, ''); // Remove HTML tags
-  const wordCount = textContent.split(/\s+/).length;
-  return Math.ceil(wordCount / wordsPerMinute);
-}
+
 
 export default async function BlogPage() {
   const blogPosts = await getBlogPosts();

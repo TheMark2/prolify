@@ -8,7 +8,7 @@ import ContentfulTOC from '@/components/ContentfulTOC';
 import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import RichTextRenderer from '@/components/RichTextRenderer';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import BlogPostClient from '@/components/BlogPostClient';
+import BlogPostClient from '../../../components/BlogPostClient';
 
 // Función para calcular minutos de lectura
 function calculateReadingTime(content: string): number {
