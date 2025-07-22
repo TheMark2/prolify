@@ -50,9 +50,11 @@ export default function RootLayout({
         {/* Ahrefs Web Analytics */}
         <script
           src="https://analytics.ahrefs.com/analytics.js"
-          data-key="62W7+DYKAr7y+JoJzPKRbw"
-          defer
-        ></script>
+          data-key="62W7+OYKka7y+JQJzPKRbw"
+          async
+        >
+
+        </script>
       </head>
       <body className={plusJakarta.variable}>
         <GlobalHeader />
