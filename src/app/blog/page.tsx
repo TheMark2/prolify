@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { PaperAirplaneIcon } from '@heroicons/react/16/solid';
 import { getBlogPosts } from '@/lib/contentful';
 
-
+// Enable ISR - regenerate blog list every 60 seconds if there's a request
+export const revalidate = 60;
 
 export default async function BlogPage() {
   const blogPosts = await getBlogPosts();

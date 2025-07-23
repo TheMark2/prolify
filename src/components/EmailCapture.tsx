@@ -70,11 +70,11 @@ export default function EmailCapture() {
   };
 
   return (
-    <div id="email-capture" className="py-8 sm:py-12 lg:py-16 bg-neutral-50">
+    <div id="email-capture" className="py-8 sm:py-12 lg:py-16 bg-neutral-50 h-100vh">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="text-center mb-6 sm:mb-8 space-y-6">
-            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black-950 mb-4 leading-tight px-2">
+            <h2 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black-950 mb-8 leading-tight px-2">
                 Automatización inmobiliaria SaaS, <span className="font-medium font-lora text-neutral-800">impulsa tu inmobiliaria</span>
             </h2>
             <p className="text-sm sm:text-base text-black-600 max-w-2xl mx-auto leading-relaxed px-4">

@@ -28,7 +28,7 @@ const renderOptions = {
       const text = (node.content[0] as Text)?.value || '';
       const id = `heading-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`;
       return (
-        <h2 id={id} className="text-3xl font-bold mt-20 mb-10 leading-tight tracking-tight">
+        <h2 id={id} className="text-3xl font-bold my-10 leading-tight tracking-tight">
           {children}
         </h2>
       );

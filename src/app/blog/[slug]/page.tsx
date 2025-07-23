@@ -34,6 +34,9 @@ export async function generateStaticParams() {
   }));
 }
 
+// Enable ISR - regenerate pages every 60 seconds if there's a request
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
@@ -51,10 +54,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? `https:${post.fields.featuredImage.fields.file.url}` 
     : `${baseUrl}/og-default.jpg`;
 
+  // Process keywords from Contentful (JSON format)
+  let postKeywords = 'inmobiliaria, propiedades, gestión, ' + post.fields.category;
+  if (post.fields.keywords) {
+    try {
+      const keywordsData = typeof post.fields.keywords === 'string' 
+        ? JSON.parse(post.fields.keywords) 
+        : post.fields.keywords;
+      
+      if (Array.isArray(keywordsData)) {
+        postKeywords = keywordsData.join(', ');
+      } else if (keywordsData.keywords && Array.isArray(keywordsData.keywords)) {
+        postKeywords = keywordsData.keywords.join(', ');
+      }
+    } catch (error) {
+      console.warn('Error parsing keywords for post:', slug, error);
+    }
+  }
+
   return {
     title: `${post.fields.title} | Proplify`,
     description: post.fields.excerpt || post.fields.title,
-    keywords: 'inmobiliaria, propiedades, gestión, España, ' + post.fields.category,
+    keywords: postKeywords,
     authors: [{ name: 'Proplify' }],
     creator: 'Proplify',
     publisher: 'Proplify',
@@ -143,22 +164,44 @@ export default async function BlogPost({ params }: Props) {
           <div className="flex-1 max-w-4xl">
             {/* Article Header */}
             <header className="mb-12">
-              <div className="mb-6 justify-between flex items-center">
+              {/* Desktop layout - original design */}
+              <div className="hidden sm:flex mb-6 items-center justify-between">
                 <span className="text-xs font-medium text-neutral-500 uppercase tracking-wide border border-neutral-200 px-4 py-2 rounded-full bg-neutral-50">
                   {post.fields.category}
                 </span>
-                <time className="text-sm text-neutral-400 ml-4">
+                <time className="text-sm text-neutral-400">
                   {new Date(post.fields.publishedDate).toLocaleDateString('es-ES', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
                   })}
                 </time>
-                <span className="text-xs text-neutral-400 ml-4 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 bg-neutral-50">
+                <span className="text-xs text-neutral-400 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 bg-neutral-50">
                   <IconClockHour10 size={16} />
                   {readingTime} min de lectura
                 </span>
               </div>
+
+              {/* Mobile layout - category and reading time */}
+              <div className="sm:hidden mb-4 flex items-center justify-between">
+                <span className="text-xs font-medium text-neutral-500 uppercase tracking-wide border border-neutral-200 px-4 py-2 rounded-full bg-neutral-50">
+                  {post.fields.category}
+                </span>
+                <span className="text-xs text-neutral-400 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 bg-neutral-50">
+                  <IconClockHour10 size={16} />
+                  {readingTime} min de lectura
+                </span>
+              </div>
+
+              {/* Mobile date - smaller and above title */}
+              <time className="sm:hidden block text-xs text-neutral-400 mb-2 mt-8">
+                {new Date(post.fields.publishedDate).toLocaleDateString('es-ES', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+
               <h1 className="text-4xl sm:text-5xl font-bold text-black-950 leading-tight mb-8">
                 {post.fields.title}
               </h1>

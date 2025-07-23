@@ -9,26 +9,17 @@ export default function HeroSection() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center space-y-8 justify-center">
-        {/* Navigation */}
-        <nav className="flex justify-center mb-8">
-          <Link 
-            href="/blog" 
-            className="text-neutral-600 hover:text-black-950 font-medium transition-colors"
-          >
-            Blog
-          </Link>
-        </nav>
 
         {/* Main Headline */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black-950 mb-4 leading-tight mt-4 sm:mt-6 lg:mt-8 px-2">
-          Software de gestión inmobiliaria{' '}
-          <span className="text-neutral-700 font-lora font-medium italic">plataforma digital todo-en-uno</span>
+        <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black-950 mb-6 leading-tight mt-4 sm:mt-6 lg:mt-8 px-2">
+          El próximo mejor software de gestión inmobiliaria{' '}
+          <span className="font-medium font-lora text-neutral-800">plataforma digital todo-en-uno</span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg sm:text-xl text-black-600 max-w-4xl mx-auto leading-relaxed mt-4 sm:mt-6 lg:mt-8 px-4">
-          Próximamente: CRM inmobiliario español completo. Automatiza marketing inmobiliario, integra Idealista y Fotocasa, 
-          gestiona propiedades digitalmente y convierte más leads con IA. Únete a la lista de espera.
+          Programa de gestión inmobiliaria completo. Automatiza marketing inmobiliario, integra con muchos portales, 
+          gestiona propiedades digitalmente y convierte más leads con IA. <span className="font-medium">Únete a la lista de espera.</span>
         </p>
 
         {/* CTA Button */}

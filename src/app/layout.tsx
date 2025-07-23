@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Lora } from 'next/font/google';
 import "./globals.css";
 import StructuredData from '@/components/StructuredData';
 import GlobalHeader from '@/components/GlobalHeader';
+import Footer from '@/components/Footer';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -19,9 +20,9 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Proplify - Software Gestión Inmobiliaria España | Plataforma Digital Todo-en-Uno",
-  description: "Nueva plataforma digital para inmobiliarias españolas. Automatiza marketing, integra Idealista/Fotocasa, CRM inmobiliario con IA. Únete a la lista de espera.",
-  keywords: "software gestión inmobiliaria España, plataforma digital inmobiliarias, CRM inmobiliario español, automatización inmobiliaria SaaS, software captación leads inmobiliarios, gestión propiedades digital, marketing inmobiliario automatizado, Idealista integración, Fotocasa API, software inmobiliario español",
+  title: "Proplify - Software Gestión Inmobiliaria | Plataforma Digital Todo-en-Uno",
+  description: "Nueva plataforma digital para inmobiliarias. Automatiza marketing, integra todo tipo de portales, CRM inmobiliario con IA. Únete a la lista de espera.",
+  keywords: "software gestión inmobiliaria, plataforma digital inmobiliarias, CRM inmobiliario, automatización inmobiliaria SaaS, software captación leads inmobiliarios, gestión propiedades digital, marketing inmobiliario automatizado, Idealista integración, Fotocasa API, software inmobiliario",
   authors: [{ name: "Proplify Team" }],
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
@@ -63,6 +64,9 @@ export default function RootLayout({
         <main className="min-h-screen bg-white">
           {children}
         </main>
+        
+        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );

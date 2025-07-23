@@ -66,8 +66,8 @@ export function WaitlistDialog({ open, onOpenChange }: WaitlistDialogProps) {
             <div className="w-16 h-16 bg-neutral-50 border border-neutral-200 rounded-lg flex items-center justify-center mb-4 animate-in zoom-in-95 duration-300 delay-150">
               <IconBellCheck size={24} />
             </div>
-            <h3 className="text-2xl font-lora font-medium mb-2 animate-in fade-in-0 slide-in-from-bottom-2 duration-300 delay-200">¡Gracias por unirte!</h3>
-            <p className="text-xs text-neutral-600 animate-in fade-in-0 slide-in-from-bottom-2 duration-300 delay-300">
+            <h3 className="text-2xl font-lora font-medium mb-4 animate-in fade-in-0 slide-in-from-bottom-2 duration-300 delay-200">¡Gracias por unirte!</h3>
+            <p className="text-base text-neutral-600 animate-in fade-in-0 slide-in-from-bottom-2 duration-300 delay-300">
               Te contactaremos pronto con novedades sobre Proplify y tu primer mes gratuito.
             </p>
           </div>

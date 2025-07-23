@@ -37,6 +37,7 @@ export interface BlogPost {
       };
     };
     publishedDate: string;
+    keywords?: string | string[] | { keywords: string[] }; // JSON field for SEO keywords
   };
 }
 
