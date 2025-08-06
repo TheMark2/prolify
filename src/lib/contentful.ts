@@ -47,8 +47,10 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     const entries = await client.getEntries({
       content_type: 'blogPost',
       order: ['-fields.publishedDate'],
+      limit: 1000, // Aumentar el límite para obtener todos los posts
     });
 
+    console.log(`Contentful: Found ${entries.items.length} blog posts`);
     return entries.items as unknown as BlogPost[];
   } catch (error) {
     console.error('Error fetching blog posts:', error);
